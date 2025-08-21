@@ -1,0 +1,123 @@
+<div class="container mt-4">
+    <div class="left">
+        <h2>User Form</h2>
+    </div>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+
+    <div class="row mb-3">
+      <label for="username" class="col-sm-3 col-form-label">Username *</label>
+      <div class="col-sm-9">
+        <input type="text" placeholder="Username" formControlName="username" id="username" class="rounded">
+        <div class="text-danger mt-1"
+             *ngIf="(userForm.get('username')?.touched || userForm.get('username')?.dirty) && userForm.get('username')?.invalid">
+          <small *ngIf="userForm.get('username')?.errors?.['required']">
+            Username is required
+          </small>
+          <small *ngIf="userForm.get('username')?.errors?.['maxlength']">
+            Max 20 characters allowed
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="email" class="col-sm-3 col-form-label">Email *</label>
+      <div class="col-sm-9">
+        <input type="email" placeholder="Email" formControlName="email" id="email" class="rounded">
+        <div class="text-danger mt-1"
+             *ngIf="(userForm.get('email')?.touched || userForm.get('email')?.dirty) && userForm.get('email')?.invalid">
+          <small *ngIf="userForm.get('email')?.errors?.['required']">
+            Email is required
+          </small>
+          <small *ngIf="userForm.get('email')?.errors?.['email']">
+            Email is invalid
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="phonenumber" class="col-sm-3 col-form-label">Phone number *</label>
+      <div class="col-sm-9">
+        <input type="text" placeholder="Phone Number" formControlName="phonenumber" id="phonenumber" class="rounded">
+        <div class="text-danger mt-1"
+             *ngIf="(userForm.get('phonenumber')?.touched || userForm.get('phonenumber')?.dirty)">
+          <small *ngIf="userForm.get('phonenumber')?.errors?.['required']">
+            Phone Number is required
+          </small>
+          <small *ngIf="userForm.get('phonenumber')?.errors?.['minlength'] || userForm.get('phonenumber')?.errors?.['maxlength']">
+            Enter 10 digit number
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label for="alternatenumber" class="col-sm-3 col-form-label">Alternate number *</label>
+      <div class="col-sm-9">
+        <div class="form-check">
+          <input type="checkbox" formControlName="alternatenumber" id="alternatenumber" class="form-check-input">
+          <label for="alternatenumber" class="form-check-label">Yes</label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="userForm.get('alternatenumber')?.value" class="row mb-3">
+      <label for="alternatenumbervalue" class="col-sm-3 col-form-label">Enter Alternate Number</label>
+      <div class="col-sm-9">
+        <input type="text" placeholder="Alternate Number" formControlName="alternatenumbervalue" id="alternatenumbervalue" class="rounded">
+        <div class="text-danger mt-1"
+             *ngIf="(userForm.get('phonenumber')?.touched || userForm.get('phonenumber')?.dirty)">
+          <small *ngIf="userForm.get('phonenumber')?.errors?.['minlength'] || userForm.get('phonenumber')?.errors?.['maxlength']">
+            Enter 10 digit number
+          </small>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-3">
+      <label for="country" class="col-sm-3 col-form-label">Country *</label>
+      <div class="col-sm-9">
+        <select formControlName="country" id="country" class="rounded">
+          <option value=""> -- Select Country -- </option>
+          <option value="india">India</option>
+          <option value="usa">USA</option>
+          <option value="russia">Russia</option>
+        </select>
+        <div class="text-danger mt-1" *ngIf="userForm.get('country')?.touched && userForm.get('country')?.invalid">
+          <small *ngIf="userForm.get('country')?.errors?.['required']">
+            Country is required
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label">Gender *</label>
+      <div class="col-sm-9">
+        <div class="form-check form-check-inline">
+          <input type="radio" formControlName="gender" value="male" id="male" class="form-check-input">
+          <label for="male" class="form-check-label">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" formControlName="gender" value="female" id="female" class="form-check-input">
+          <label for="female" class="form-check-label">Female</label>
+        </div>
+        <div class="text-danger mt-1" *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.invalid">
+          <small *ngIf="userForm.get('gender')?.errors?.['required']">
+            Gender is required
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="offset-sm-3 col-sm-9">
+        <button type="submit" class="btn btn-primary me-2" [disabled]="userForm.invalid">Submit</button>
+        <button type="button" class="btn btn-danger" (click)="back()">Back</button>
+      </div>
+    </div>
+
+  </form>
+</div>

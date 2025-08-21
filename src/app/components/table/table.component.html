@@ -1,0 +1,29 @@
+<div class="text-center mt-5">
+    <button class="btn btn-primary" (click)="addUser()">Add User</button>
+</div>
+<div class="text-center mt-4" *ngIf="users.length === 0"> 
+    <h2>No User Details Found</h2>
+</div>
+<div class="text-center mt-4" *ngIf="users.length>0">
+    <h2>User Details</h2>
+    <table>
+        <thead>
+            <th> UserName </th>
+            <th> Email </th>
+            <th> Phone Number</th>
+            <th> Alternate Number</th>
+            <th> Country </th>
+            <th> Gender </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let form of users">
+                <td>{{form.username}}</td>
+                <td>{{form.email}}</td>
+                <td>{{form.phonenumber}}</td>
+                <td>{{form.alternatenumbervalue}}</td>
+                <td>{{form.country}}</td>
+                <td>{{form.gender}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
