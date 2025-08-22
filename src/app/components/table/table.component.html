@@ -1,28 +1,46 @@
 <div class="text-center mt-5">
     <button class="btn btn-primary" (click)="addUser()">Add User</button>
+
 </div>
-<div class="text-center mt-4" *ngIf="users.length === 0"> 
+<div class="text-center mt-4" *ngIf="users.length === 0">
     <h2>No User Details Found</h2>
 </div>
-<div class="text-center mt-4" *ngIf="users.length>0">
-    <h2>User Details</h2>
-    <table>
+<div class="mt-4" *ngIf="users.length>0">
+    <div class="text-center">
+        <h2>User Details</h2>
+    </div>
+    <div class="text-end">
+        <button class="btn btn-danger me-4" (click)="deleteUSer()" [disabled]="selectedIds.length === 0">Delete</button>
+        <button class="btn btn-warning me-4" (click)="editUser()" [disabled]="selectedIds.length !== 1"> Edit</button>
+    </div>
+    <table class="table table-bordered mt-3 text-center">
         <thead>
+            <th></th>
             <th> UserName </th>
             <th> Email </th>
             <th> Phone Number</th>
             <th> Alternate Number</th>
             <th> Country </th>
             <th> Gender </th>
+            <!-- <th> Action </th> -->
         </thead>
         <tbody>
+            <!-- <tr *ngFor="let form of users let i = index">  for delete using index -->
             <tr *ngFor="let form of users">
+                <td class="text-center">
+                    <input type="checkbox" [checked]="isSelected(form.id)" (change)="selection(form.id, $event)">
+                </td>
                 <td>{{form.username}}</td>
                 <td>{{form.email}}</td>
                 <td>{{form.phonenumber}}</td>
                 <td>{{form.alternatenumbervalue}}</td>
                 <td>{{form.country}}</td>
                 <td>{{form.gender}}</td>
+
+                <!-- delete user button using index -->
+                <!-- <td>
+                    <button class="btn btn-danger" (click)="deleteUser(i)">Delete</button>
+                </td> -->
             </tr>
         </tbody>
     </table>

@@ -81,9 +81,9 @@
       <div class="col-sm-9">
         <select formControlName="country" id="country" class="rounded">
           <option value=""> -- Select Country -- </option>
-          <option value="india">India</option>
-          <option value="usa">USA</option>
-          <option value="russia">Russia</option>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+          <option value="Russia">Russia</option>
         </select>
         <div class="text-danger mt-1" *ngIf="userForm.get('country')?.touched && userForm.get('country')?.invalid">
           <small *ngIf="userForm.get('country')?.errors?.['required']">

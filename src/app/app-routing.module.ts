@@ -6,7 +6,7 @@ import { UserformComponent } from './components/userform/userform.component';
 const routes: Routes = [
   {path:'users', component:TableComponent},
   {path:'userform', component:UserformComponent},
-  {path:'', redirectTo:'users', pathMatch:'full'}
+  {path:'', redirectTo:'users', pathMatch:'full'},
 ];
 
 
